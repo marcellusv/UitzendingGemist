@@ -10,11 +10,12 @@
 		{
 			echo '<a href="';
 			echo "http://download.omroep.nl/audiologging/r3/$loopyear/$loopmonth/$loopday/";
-			echo "2200_0100_3voor12_radio_$loopyear$loopmonth$loopday.mp3";
+			echo "2100_0000_3voor12_radio_$loopyear$loopmonth$loopday.mp3";
 			echo '">';
 			echo date('l Y-m-d', $loopdate);
 			echo '</a>';
 			echo '<br>';
+			echo "\n";
 		}
 	}
 ?>

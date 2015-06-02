@@ -35,7 +35,7 @@ do
 	loopday=`date  --date="@$loopdate" +"%d"`
 
 	url="http://download.omroep.nl/audiologging/r3/$loopyear/$loopmonth/$loopday/"
-	file="2200_0100_3voor12_radio_$loopyear$loopmonth$loopday.mp3"
+	file="2100_0000_3voor12_radio_$loopyear$loopmonth$loopday.mp3"
 
 	if [ ! -f $savedir$file ]; then
 		wget $url$file -P $savedir
