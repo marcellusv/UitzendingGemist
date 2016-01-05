@@ -41,13 +41,15 @@
 			$url .= "2100_0000_3voor12_radio_$loopyear$loopmonth$loopday.mp3";
 			$head = array_change_key_case(get_headers($url, TRUE));
 
+			if ($head['content-length'][1] <= 8)
+				continue;
+
 			echo '			<item>'."\n";
 			echo '			<title>3voor12 ('.date('d-m-Y', $loopdate).')</title>'."\n";
 			echo '			<itunes:subtitle>Luister de hoogtepunten van 3voor12 van '.date('l d F Y', $loopdate).' terug!</itunes:subtitle>'."\n";
 			echo '			<itunes:summary><![CDATA[ Luister de hoogtepunten van 3voor12 van '.date('l d F Y', $loopdate).' terug! ]]></itunes:summary>'."\n";
 			echo '			<description>Luister de hoogtepunten van 3voor12 van '.date('l d F Y', $loopdate).' terug!</description>'."\n";
-
-
+			
 			echo '			<link>'.$url.'</link>'."\n";
 			echo '			<enclosure url="'.$url.'" length="'.$head['content-length'][1].'" type="audio/mpeg"/>'."\n";
 			echo '			<guid>'.$url.'</guid>'."\n";
