@@ -29,10 +29,17 @@ timestamp=`date +"%s"` # Current time in seconds
 counter=1 # Always start with yesterday, because the current day has no mp3 yet
 while [ $counter -le $days ] # Lower or Equal
 do
-	loopdate=$(($timestamp - 60 * 60 * 24 * $counter))
-	loopyear=`date  --date="@$loopdate" +"%Y"`
-	loopmonth=`date  --date="@$loopdate" +"%m"`
-	loopday=`date  --date="@$loopdate" +"%d"`
+	if [[ "$OSTYPE" == "darwin"* ]]; then
+		loopdate=$(($timestamp - 60 * 60 * 24 * $counter))
+		loopyear=`date -v -${counter}d +"%Y"`
+		loopmonth=`date -v -${counter}d +"%m"`
+		loopday=`date -v -${counter}d +"%d"`
+	else
+		loopdate=$(($timestamp - 60 * 60 * 24 * $counter))
+		loopyear=`date  --date="@$loopdate" +"%Y"`
+		loopmonth=`date  --date="@$loopdate" +"%m"`
+		loopday=`date  --date="@$loopdate" +"%d"`
+	fi
 
 	url="http://download.omroep.nl/audiologging/r3/$loopyear/$loopmonth/$loopday/"
 	file="2100_0000_3voor12_radio_$loopyear$loopmonth$loopday.mp3"
